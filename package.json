@@ -1,7 +1,11 @@
 {
   "name": "godisbilen-webserver",
-  "description": "TODO",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "Albin Médoc",
+  "private": true,
+  "license": "SEE LICENSE IN LICENSE.md",
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
