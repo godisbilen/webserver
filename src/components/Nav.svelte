@@ -1,5 +1,4 @@
 <script lang="ts">
-	import cssVars from 'svelte-css-vars';
 	import HamburgerButton from './HamburgerButton.svelte';
 
 	export let segment: string;
@@ -12,13 +11,6 @@
 	
 	// Hide navigation when url change
     $:  hide_nav(segment);
-
-    $: styleVars = {
-		headerHeight: '70px',
-		headerBackgroundColor: '#b1e8ed',
-		navWidth: '300px',
-	};
-	let hamburger_color = '#e86ed0';
 </script>
 
 <style>
@@ -53,10 +45,6 @@
         #logo > img {
             display: block;
         }
-	}
-	
-	nav + :global(main) {
-		margin-top: var(--headerHeight);
 	}
 
     nav {
@@ -98,13 +86,13 @@
     }
 </style>
 
-<header use:cssVars={styleVars}>
+<header>
     <a href="/" id="logo">
         <img src="/logo.svg" alt="Godisbilen logo" title="Startsida" />
     </a>
-    <HamburgerButton bind:active={nav_active} color={hamburger_color} />
+    <HamburgerButton bind:active={nav_active} />
 </header>
-<nav role="navigation" class="{nav_active ? 'is-active' : ''}" use:cssVars={styleVars}>
+<nav role="navigation" class="{nav_active ? 'is-active' : ''}">
     <section>
         <h3>Snabblänkar</h3>
         <ul>

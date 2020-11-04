@@ -1,15 +1,9 @@
 <script lang="ts">
-    import cssVars from 'svelte-css-vars';
 
     export let active: boolean;
-    export let color: string;
     function toggle() {
         active = !active;
     }
-
-    $: styleVars = {
-        color
-    };
 </script>
 
 <style>
@@ -31,7 +25,7 @@
     .hamburger.is-active .hamburger-inner,
     .hamburger.is-active .hamburger-inner::before,
     .hamburger.is-active .hamburger-inner::after {
-        background-color: var(--color);
+        background-color: var(--hamburgerColor);
     }
     .hamburger-box {
         width: 40px;
@@ -49,7 +43,7 @@
     .hamburger-inner::after {
         width: 40px;
         height: 4px;
-        background-color: var(--color);
+        background-color: var(--hamburgerColor);
         border-radius: 4px;
         position: absolute;
         transition-property: transform;
@@ -95,7 +89,6 @@
 </style>
 
 <button
-    use:cssVars={styleVars}
     class="hamburger hamburger--slider {active ? 'is-active' : ''}"
     type="button"
     on:click={toggle}>
