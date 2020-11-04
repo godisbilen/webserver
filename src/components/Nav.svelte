@@ -1,60 +1,120 @@
 <script lang="ts">
+	import cssVars from 'svelte-css-vars';
+	import HamburgerButton from './HamburgerButton.svelte';
+
 	export let segment: string;
+	
+	let nav_active = false;
+
+	function hide_nav(_: string){
+        nav_active = false;
+    }
+	
+	// Hide navigation when url change
+    $:  hide_nav(segment);
+
+    $: styleVars = {
+		headerHeight: '70px',
+		headerBackgroundColor: '#b1e8ed',
+		navWidth: '300px',
+	};
+	let hamburger_color = '#e86ed0';
 </script>
 
 <style>
-	nav {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
-		font-weight: 300;
-		padding: 0 1em;
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--headerBackgroundColor);
+        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.397);
+        -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.397);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.397);
+        z-index: 2;
+    }
+
+    #logo {
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        position: relative;
+    }
+
+    #logo > img {
+        height: calc(100% - 20px);
+        display: none;
+    }
+
+    @media (min-width: 325px) {
+        #logo > img {
+            display: block;
+        }
+	}
+	
+	nav + :global(main) {
+		margin-top: var(--headerHeight);
 	}
 
-	ul {
-		margin: 0;
-		padding: 0;
-	}
+    nav {
+        z-index: 1;
+        position: fixed;
+        top: var(--headerHeight);
+        min-height: calc(100vh - var(--headerHeight));
+        right: calc(var(--navWidth) * -1);
+        width: var(--navWidth);
+        transition: right 0.3s ease-in-out;
+        color: #e86ed0;
+        background-color: var(--headerBackgroundColor);
+        -webkit-box-shadow: -1px 0 5px rgba(0, 0, 0, 0.397);
+        -moz-box-shadow: -1px 0 5px rgba(0, 0, 0, 0.397);
+        box-shadow: -1px 0 5px rgba(0, 0, 0, 0.397);
+    }
 
-	/* clearfix */
-	ul::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
+    nav.is-active {
+        right: 0;
+    }
 
-	li {
-		display: block;
-		float: left;
-	}
+    nav.is-active + :global(main) {
+        width: calc(100% - var(--navWidth));
+    }
 
-	[aria-current] {
-		position: relative;
-		display: inline-block;
-	}
+    nav > section > h3 {
+        text-align: center;
+        font-size: 30px;
+    }
 
-	[aria-current]::after {
-		position: absolute;
-		content: '';
-		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(255,62,0);
-		display: block;
-		bottom: -1px;
-	}
+    nav > section > ul {
+        list-style-type: none;
+    }
 
-	a {
-		text-decoration: none;
-		padding: 1em 0.5em;
-		display: block;
-	}
+    nav > section > ul > li > a {
+        font-size: 23px;
+        color: #e86ed0;
+        line-height: 50px;
+    }
 </style>
 
-<nav>
-	<ul>
-		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">home</a></li>
-		<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about">about</a></li>
-
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">blog</a></li>
-	</ul>
+<header use:cssVars={styleVars}>
+    <a href="/" id="logo">
+        <img src="/logo.svg" alt="Godisbilen logo" title="Startsida" />
+    </a>
+    <HamburgerButton bind:active={nav_active} color={hamburger_color} />
+</header>
+<nav role="navigation" class="{nav_active ? 'is-active' : ''}" use:cssVars={styleVars}>
+    <section>
+        <h3>Snabblänkar</h3>
+        <ul>
+            <li><a href="/sortiment">Vårt sortiment</a></li>
+            <li><a href="/kalas">Kalas</a></li>
+            <li><a href="/leveransomrade">Leveransområde</a></li>
+            <li><a href="/villkor">Allmänna villkor</a></li>
+            <li><a href="/faq">Vanliga frågor</a></li>
+            <li><a href="/kontakt">Kontakta oss</a></li>
+            <li><a href="/om-oss">Om oss</a></li>
+        </ul>
+    </section>
 </nav>
