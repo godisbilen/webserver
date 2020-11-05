@@ -1,4 +1,5 @@
 <script lang="ts">
+    import logo from 'images/logo.svg';
 	import HamburgerButton from './HamburgerButton.svelte';
 
 	export let segment: string;
@@ -88,7 +89,7 @@
 
 <header>
     <a href="/" id="logo">
-        <img src="/logo.svg" alt="Godisbilen logo" title="Startsida" />
+        <img src="{logo}" alt="Godisbilen logo" title="Startsida" />
     </a>
     <HamburgerButton bind:active={nav_active} />
 </header>
