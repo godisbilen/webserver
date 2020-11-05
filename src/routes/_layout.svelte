@@ -2,6 +2,7 @@
 	import Notifications from 'svelte-notifications';
 	import cssVars from 'svelte-css-vars';
 	import Nav from '../components/Nav.svelte';
+	import Footer from '../components/Footer.svelte';
 
 	export let segment: string;
 
@@ -15,6 +16,8 @@
 
 <style>
 	main {
+		width: 100vw;
+		min-height: calc(100vh - var(--headerHeight) - 143px); /* 100vh - header - footer */
 		position: relative;
 		margin-top: var(--headerHeight);
 	}
@@ -26,5 +29,6 @@
 		<main>
 			<slot></slot>
 		</main>
+		<Footer/>
 	</Notifications>
 </div>
