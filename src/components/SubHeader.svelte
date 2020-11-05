@@ -17,9 +17,13 @@
         font-size: 40px;
     }
 
-    section p {
+    section :global(p) {
         margin: 0;
         font-size: 20px;
+    }
+
+    section :global(p > a){
+        color: inherit;
     }
 </style>
 
