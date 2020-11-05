@@ -1,7 +1,9 @@
+<script lang="ts">
+    import SubHeader from '../components/SubHeader.svelte';
+</script>
+
 <svelte:head>
-	<title>About</title>
+    <title>Om oss</title>
 </svelte:head>
 
-<h1>About this site</h1>
-
-<p>This is the 'about' page. There's not much here.</p>
+<SubHeader title="Om oss" description="Information om Godisbilen" />
