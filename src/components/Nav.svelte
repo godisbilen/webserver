@@ -85,6 +85,20 @@
         color: #e86ed0;
         line-height: 50px;
     }
+
+    @media (max-width:500px) {
+        nav.is-active{
+            width: 100%;
+        }
+
+        nav > section > ul{
+            padding: 0;
+        }
+
+        nav > section > ul > li{
+            text-align: center;
+        }
+    }
 </style>
 
 <header>

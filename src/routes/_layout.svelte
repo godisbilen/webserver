@@ -18,6 +18,7 @@
 	main {
 		width: 100vw;
 		min-height: calc(100vh - var(--headerHeight) - 143px); /* 100vh - header - footer */
+		transition: width .3s ease-in-out;
 		position: relative;
 		margin-top: var(--headerHeight);
 	}
