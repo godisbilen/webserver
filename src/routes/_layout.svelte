@@ -16,7 +16,6 @@
 <style>
 	main {
 		position: relative;
-		max-width: 56em;
 		margin-top: var(--headerHeight);
 	}
 </style>
