@@ -22,6 +22,10 @@
     }
 </style>
 
+<svelte:head>
+    <title>Kalas</title>
+</svelte:head>
+
 <SubHeader title="Kalas" description="Information om kalas" />
 
 <section>

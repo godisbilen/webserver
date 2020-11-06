@@ -23,6 +23,10 @@
     }
 </style>
 
+<svelte:head>
+    <title>Vanliga frågor</title>
+</svelte:head>
+
 <SubHeader title="Vanliga frågor">
     <p>Hittar du inte svaret här? <a href="/kontakt">Kontakta oss</a>.</p>
 </SubHeader>
