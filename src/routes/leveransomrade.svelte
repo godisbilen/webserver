@@ -35,6 +35,10 @@
     };
 </script>
 
+<svelte:head>
+    <title>Leveransområden</title>
+</svelte:head>
+
 <SubHeader title="Leveransområden">
     <p>Leverans utanför gränserna?</p>
     <p>
