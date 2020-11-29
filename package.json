@@ -17,6 +17,7 @@
     "compression": "^1.7.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "nodemailer": "^6.4.16",
     "sirv": "^1.0.0"
   },
   "devDependencies": {
@@ -37,6 +38,7 @@
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
+    "@types/nodemailer": "^6.4.0",
     "@types/polka": "^0.5.1",
     "rollup": "^2.33.3",
     "rollup-plugin-svelte": "^6.1.1",
