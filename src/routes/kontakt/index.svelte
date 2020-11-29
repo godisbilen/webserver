@@ -95,7 +95,7 @@
     </FormRow>
     <FormRow>
         <InputContainer>
-            <p class="info">
+            <p>
                 Genom att klicka på "Skicka" accepterar jag de
                 <a href="villkor">allmänna villkoren</a>
                 och
